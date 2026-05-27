@@ -1,9 +1,0 @@
-﻿namespace Bookify.Modules.Users.PublicApi;
-
-public class UserDto
-{
-    public Guid Id { get; init; }
-    public string Name { get; init; }
-    public string Email { get; init; }
-    public string TimeZone { get; init; }
-}

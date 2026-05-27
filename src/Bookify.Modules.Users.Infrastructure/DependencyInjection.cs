@@ -2,8 +2,6 @@
 using Bookify.Modules.Users.Domain;
 using Bookify.Modules.Users.Infrastructure.Data;
 using Bookify.Modules.Users.Infrastructure.Identity;
-using Bookify.Modules.Users.Infrastructure.PublicApi;
-using Bookify.Modules.Users.PublicApi;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations;
@@ -29,7 +27,5 @@ public static class DependencyInjection
 
         services.AddTransient<ITokenProvider, TokenProvider>();
         services.AddScoped<IUserProvider, UserProvider>();
-
-        services.AddScoped<IUsersApi, UsersApi>();
     }
 }

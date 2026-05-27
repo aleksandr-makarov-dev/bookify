@@ -16,7 +16,6 @@
     <ItemGroup>
       <ProjectReference Include="..\Bookify.Common\Bookify.Common.csproj" />
       <ProjectReference Include="..\Bookify.Modules.Booking.Domain\Bookify.Modules.Booking.Domain.csproj" />
-      <ProjectReference Include="..\Bookify.Modules.Users.PublicApi\Bookify.Modules.Users.PublicApi.csproj" />
     </ItemGroup>
     
 </Project>
