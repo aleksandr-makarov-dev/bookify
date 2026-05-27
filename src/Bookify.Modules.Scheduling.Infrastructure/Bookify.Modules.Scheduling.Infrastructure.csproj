@@ -11,6 +11,7 @@
     </ItemGroup>
     
     <ItemGroup>
+      <ProjectReference Include="..\Bookify.Modules.Scheduling.Application\Bookify.Modules.Scheduling.Application.csproj" />
       <ProjectReference Include="..\Bookify.Modules.Scheduling.Domain\Bookify.Modules.Scheduling.Domain.csproj" />
     </ItemGroup>
 

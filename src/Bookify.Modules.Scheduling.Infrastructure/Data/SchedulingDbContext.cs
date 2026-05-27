@@ -1,11 +1,17 @@
-﻿using Bookify.Modules.Scheduling.Domain;
+﻿using Bookify.Modules.Scheduling.Application.Abstract;
+using Bookify.Modules.Scheduling.Domain;
 using Microsoft.EntityFrameworkCore;
 
 namespace Bookify.Modules.Scheduling.Infrastructure.Data;
 
 internal class SchedulingDbContext(DbContextOptions<SchedulingDbContext> options)
-    : DbContext(options)
+    : DbContext(options), ISchedulingDataProvider
 {
+    public DbSet<EventType> EventTypes { get; set; }
+    public DbSet<AvailabilityRule> AvailabilityRules { get; set; }
+    public DbSet<DateOverride> DateOverrides { get; set; }
+    public DbSet<BookedSlot> BookedSlots { get; set; }
+
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
@@ -43,8 +49,11 @@ internal class SchedulingDbContext(DbContextOptions<SchedulingDbContext> options
 
             options.HasKey(e => e.Id);
 
+            options.HasIndex(e => new { e.EventTypeId, e.DayOfWeek })
+                .IsUnique();
+
             options.HasOne<EventType>()
-                .WithMany()
+                .WithMany(e=>e.AvailabilityRules)
                 .HasForeignKey(e => e.EventTypeId)
                 .OnDelete(DeleteBehavior.Cascade);
         });
@@ -55,8 +64,11 @@ internal class SchedulingDbContext(DbContextOptions<SchedulingDbContext> options
 
             options.HasKey(e => e.Id);
 
+            options.HasIndex(e => new { e.EventTypeId, e.Date })
+                .IsUnique();
+
             options.HasOne<EventType>()
-                .WithMany()
+                .WithMany(e=>e.DateOverrides)
                 .HasForeignKey(e => e.EventTypeId)
                 .OnDelete(DeleteBehavior.Cascade);
         });
@@ -68,7 +80,7 @@ internal class SchedulingDbContext(DbContextOptions<SchedulingDbContext> options
             options.HasKey(e => e.Id);
 
             options.HasOne<EventType>()
-                .WithMany()
+                .WithMany(e=>e.BookedSlots)
                 .HasForeignKey(e => e.EventTypeId)
                 .OnDelete(DeleteBehavior.Cascade);
         });

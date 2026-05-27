@@ -33,6 +33,8 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Bookify.Modules.Scheduling.Application\Bookify.Modules.Scheduling.Application.csproj" />
+      <ProjectReference Include="..\Bookify.Modules.Scheduling.Infrastructure\Bookify.Modules.Scheduling.Infrastructure.csproj" />
       <ProjectReference Include="..\Bookify.Modules.Users.Application\Bookify.Modules.Users.Application.csproj" />
       <ProjectReference Include="..\Bookify.Modules.Users.Infrastructure\Bookify.Modules.Users.Infrastructure.csproj" />
     </ItemGroup>

@@ -10,4 +10,8 @@ public class EventType
     public decimal Price { get; set; }
     public string Currency { get; set; }
     public Guid OwnerId { get; set; }
+
+    public List<AvailabilityRule> AvailabilityRules { get; set; } = [];
+    public List<DateOverride> DateOverrides { get; set; } = [];
+    public List<BookedSlot> BookedSlots { get; set; } = [];
 }
