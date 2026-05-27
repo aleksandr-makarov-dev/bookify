@@ -18,6 +18,7 @@ public class CreateOrderCommand : IRequest<ErrorOr<CreateOrderResult>>
     public DateTime EndDateTime { get; init; }
     public string? Message { get; set; }
     public Guid UserId { get; init; }
+    public string TimeZone { get; init; }
 }
 
 public class CreateOderCommandHandler(IBookingDataProvider bookingDataProvider)
@@ -26,6 +27,11 @@ public class CreateOderCommandHandler(IBookingDataProvider bookingDataProvider)
     public async Task<ErrorOr<CreateOrderResult>> Handle(CreateOrderCommand request,
         CancellationToken cancellationToken)
     {
+        var timeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById(request.TimeZone);
+
+        var utcStartDateTime = TimeZoneInfo.ConvertTimeToUtc(request.StartDateTime, timeZoneInfo);
+        var utcEndDateTime = TimeZoneInfo.ConvertTimeToUtc(request.EndDateTime, timeZoneInfo);
+
         var orderId = Guid.NewGuid();
 
         var order = new Order
@@ -33,9 +39,9 @@ public class CreateOderCommandHandler(IBookingDataProvider bookingDataProvider)
             Id = orderId,
             EventTypeId = request.EventTypeId,
             UserId = request.UserId,
-            StartDateTime = request.StartDateTime,
-            EndDateTime = request.EndDateTime,
-            Amount = 0,
+            StartDateTime = utcStartDateTime,
+            EndDateTime = utcEndDateTime,
+            Amount = 15,
             Currency = Currency.EUR,
             Message = request.Message,
             Status = OrderStatus.Pending,

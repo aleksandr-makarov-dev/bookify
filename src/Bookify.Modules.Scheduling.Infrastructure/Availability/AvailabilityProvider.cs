@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Bookify.Modules.Scheduling.Infrastructure.Availability;
 
-public class AvailabilityProvider(ISchedulingDataProvider schedulingDataProvider) : IAvailabilityProvider
+internal sealed class AvailabilityProvider(ISchedulingDataProvider schedulingDataProvider) : IAvailabilityProvider
 {
     public async Task<Dictionary<DateOnly, List<AvailableSlotDto>>> GetAvailableSlotsAsync(Guid eventTypeId,
         DateOnly startDate,

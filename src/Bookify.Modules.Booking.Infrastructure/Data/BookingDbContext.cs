@@ -41,7 +41,7 @@ internal class BookingDbContext(DbContextOptions<BookingDbContext> options)
                 .IsRequired();
 
             options.Property(e => e.ExternalPaymentId)
-                .HasMaxLength(32)
+                .HasMaxLength(256)
                 .IsRequired();
 
             options.HasOne<Order>()

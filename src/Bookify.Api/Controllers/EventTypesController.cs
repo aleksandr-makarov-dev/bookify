@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Bookify.Modules.Scheduling.Application.Availability;
 using Bookify.Modules.Scheduling.Application.EventTypes;
+using Bookify.Modules.Users.Application.Abstract;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -10,7 +11,7 @@ namespace Bookify.Api.Controllers;
 [Authorize]
 [ApiController]
 [Route("api/event-types")]
-public class EventTypesController(IMediator mediator) : ControllerBase
+public class EventTypesController(IMediator mediator, IUserProvider userProvider) : ControllerBase
 {
     [HttpPost]
     public async Task<IActionResult> CreateEventType([FromBody] CreateEventTypeCommand command, CancellationToken ct)
@@ -37,7 +38,7 @@ public class EventTypesController(IMediator mediator) : ControllerBase
             EventTypeId = eventTypeId,
             StartDate = startDate,
             EndDate = endDate,
-            TimeZone = "Europe/Helsinki"
+            TimeZone = userProvider.TimeZone
         };
 
         var result = await mediator.Send(query, ct);

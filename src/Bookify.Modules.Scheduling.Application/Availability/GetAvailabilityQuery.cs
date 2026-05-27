@@ -1,6 +1,5 @@
 ﻿using Bookify.Modules.Scheduling.Application.Abstract;
 using Bookify.Modules.Scheduling.Application.Abstract.Models;
-using ErrorOr;
 using MediatR;
 
 namespace Bookify.Modules.Scheduling.Application.Availability;
