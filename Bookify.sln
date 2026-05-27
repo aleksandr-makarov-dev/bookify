@@ -20,6 +20,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookify.Modules.Users.Infra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookify.Modules.Users.Application", "src\Bookify.Modules.Users.Application\Bookify.Modules.Users.Application.csproj", "{7EF4CC3C-9BA1-49EE-AF80-05D293658AAE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scheduling", "Scheduling", "{E4491E66-C55E-4604-A2A8-9A6AB246B3FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookify.Modules.Scheduling.Domain", "src\Bookify.Modules.Scheduling.Domain\Bookify.Modules.Scheduling.Domain.csproj", "{8A5497E1-599F-4425-ACAB-B3AA414334AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookify.Modules.Scheduling.Infrastructure", "src\Bookify.Modules.Scheduling.Infrastructure\Bookify.Modules.Scheduling.Infrastructure.csproj", "{7D47391B-4534-4DA0-A908-3F710DFFDB63}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookify.Modules.Scheduling.Application", "src\Bookify.Modules.Scheduling.Application\Bookify.Modules.Scheduling.Application.csproj", "{E4788284-7B5C-4AF3-BAF2-CA9B893DD5AF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +40,10 @@ Global
 		{918DDF7C-D79C-4106-9C9C-66B10104CA4C} = {400C4373-EFA1-460D-A2CF-37513F63DED4}
 		{9AAE3C87-78F3-42E3-A626-28DD41823C69} = {400C4373-EFA1-460D-A2CF-37513F63DED4}
 		{7EF4CC3C-9BA1-49EE-AF80-05D293658AAE} = {400C4373-EFA1-460D-A2CF-37513F63DED4}
+		{E4491E66-C55E-4604-A2A8-9A6AB246B3FE} = {499EA8D2-8154-4DFD-991C-C7D1D33CE840}
+		{8A5497E1-599F-4425-ACAB-B3AA414334AB} = {E4491E66-C55E-4604-A2A8-9A6AB246B3FE}
+		{7D47391B-4534-4DA0-A908-3F710DFFDB63} = {E4491E66-C55E-4604-A2A8-9A6AB246B3FE}
+		{E4788284-7B5C-4AF3-BAF2-CA9B893DD5AF} = {E4491E66-C55E-4604-A2A8-9A6AB246B3FE}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{92071C1A-136E-4B3C-9F48-775A2DB0DD14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -50,5 +62,17 @@ Global
 		{7EF4CC3C-9BA1-49EE-AF80-05D293658AAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7EF4CC3C-9BA1-49EE-AF80-05D293658AAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7EF4CC3C-9BA1-49EE-AF80-05D293658AAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A5497E1-599F-4425-ACAB-B3AA414334AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A5497E1-599F-4425-ACAB-B3AA414334AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A5497E1-599F-4425-ACAB-B3AA414334AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A5497E1-599F-4425-ACAB-B3AA414334AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D47391B-4534-4DA0-A908-3F710DFFDB63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D47391B-4534-4DA0-A908-3F710DFFDB63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D47391B-4534-4DA0-A908-3F710DFFDB63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D47391B-4534-4DA0-A908-3F710DFFDB63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4788284-7B5C-4AF3-BAF2-CA9B893DD5AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4788284-7B5C-4AF3-BAF2-CA9B893DD5AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4788284-7B5C-4AF3-BAF2-CA9B893DD5AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4788284-7B5C-4AF3-BAF2-CA9B893DD5AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -1,5 +1,7 @@
 using System.Text;
+using Bookify.Api.Behaviors;
 using Bookify.Modules.Users.Infrastructure;
+using FluentValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi;
@@ -12,7 +14,17 @@ builder.Services.AddControllers();
 
 builder.Services.AddUsersModule(builder.Configuration);
 
+builder.Services.AddValidatorsFromAssemblies([Bookify.Modules.Users.Application.AssemblyReference.Assembly]);
+
+builder.Services.AddMediatR(cfg =>
+{
+    cfg.RegisterServicesFromAssembly(typeof(Bookify.Modules.Users.Application.AssemblyReference).Assembly);
+
+    cfg.AddOpenBehavior(typeof(ValidationPipelineBehavior<,>));
+});
+
 builder.Services.AddHttpContextAccessor();
+builder.Services.AddProblemDetails();
 
 builder.Services.AddEndpointsApiExplorer();
 
@@ -53,12 +65,6 @@ builder.Services.AddAuthentication(options =>
 
         ClockSkew = TimeSpan.Zero
     };
-});
-
-
-builder.Services.AddMediatR(cfg =>
-{
-    cfg.RegisterServicesFromAssembly(typeof(Bookify.Modules.Users.Application.AssemblyReference).Assembly);
 });
 
 

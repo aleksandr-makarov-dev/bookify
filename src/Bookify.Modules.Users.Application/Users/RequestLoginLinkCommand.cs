@@ -1,6 +1,7 @@
 ﻿using System.Text;
 using Bookify.Modules.Users.Domain;
 using ErrorOr;
+using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.WebUtilities;
@@ -16,6 +17,16 @@ public class RequestLoginLinkResult
 public class RequestLoginLinkCommand : IRequest<ErrorOr<RequestLoginLinkResult>>
 {
     public string Email { get; init; }
+}
+
+public class RequestLoginLinkValidator : AbstractValidator<RequestLoginLinkCommand>
+{
+    public RequestLoginLinkValidator()
+    {
+        RuleFor(e => e.Email)
+            .NotEmpty()
+            .EmailAddress();
+    }
 }
 
 public class RequestLoginLinkHandler(UserManager<User> userManager)

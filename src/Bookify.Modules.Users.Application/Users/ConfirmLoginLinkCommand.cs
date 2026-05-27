@@ -2,6 +2,7 @@
 using Bookify.Modules.Users.Application.Abstract;
 using Bookify.Modules.Users.Domain;
 using ErrorOr;
+using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.WebUtilities;
@@ -17,6 +18,19 @@ public class ConfirmLoginLinkCommand : IRequest<ErrorOr<ConfirmLoginLinkResult>>
 {
     public string Email { get; init; }
     public string Token { get; init; }
+}
+
+public class ConfirmLoginLinkValidator : AbstractValidator<ConfirmLoginLinkCommand>
+{
+    public ConfirmLoginLinkValidator()
+    {
+        RuleFor(e => e.Email)
+            .NotEmpty()
+            .EmailAddress();
+
+        RuleFor(e => e.Token)
+            .NotEmpty();
+    }
 }
 
 public class ConfirmLoginLinkCommandHandler(UserManager<User> userManager, ITokenProvider tokenProvider)

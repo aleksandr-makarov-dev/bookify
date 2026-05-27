@@ -1,6 +1,7 @@
 ﻿using System.Text;
 using Bookify.Modules.Users.Domain;
 using ErrorOr;
+using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.WebUtilities;
@@ -18,6 +19,22 @@ public class RegisterUserCommand : IRequest<ErrorOr<RegisterUserResult>>
     public string Name { get; init; }
     public string Email { get; init; }
     public string TimeZone { get; init; }
+}
+
+public class RegisterUserValidator : AbstractValidator<RegisterUserCommand>
+{
+    public RegisterUserValidator()
+    {
+        RuleFor(e => e.Name)
+            .NotEmpty();
+
+        RuleFor(e => e.Email)
+            .NotEmpty()
+            .EmailAddress();
+
+        RuleFor(e => e.TimeZone)
+            .NotEmpty();
+    }
 }
 
 public class RegisterUserCommandHandler(UserManager<User> userManager)
