@@ -1,4 +1,5 @@
-﻿using Bookify.Modules.Users.Domain;
+﻿using Bookify.Modules.Users.Application.Abstract;
+using Bookify.Modules.Users.Domain;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,7 +13,7 @@ internal class UsersDbContext(DbContextOptions<UsersDbContext> options)
         base.OnModelCreating(builder);
 
         builder.HasDefaultSchema("users");
-        
+
         builder.Entity<User>(options =>
         {
             options.Property(e => e.TimeZone)

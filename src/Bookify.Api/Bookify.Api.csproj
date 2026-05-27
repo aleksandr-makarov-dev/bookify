@@ -5,6 +5,7 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <UserSecretsId>f8d5567f-62c6-4c9d-b43b-29e0f571cba2</UserSecretsId>
     </PropertyGroup>
 
     <ItemGroup>
@@ -33,6 +34,8 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Bookify.Modules.Booking.Application\Bookify.Modules.Booking.Application.csproj" />
+      <ProjectReference Include="..\Bookify.Modules.Booking.Infrastructure\Bookify.Modules.Booking.Infrastructure.csproj" />
       <ProjectReference Include="..\Bookify.Modules.Scheduling.Application\Bookify.Modules.Scheduling.Application.csproj" />
       <ProjectReference Include="..\Bookify.Modules.Scheduling.Infrastructure\Bookify.Modules.Scheduling.Infrastructure.csproj" />
       <ProjectReference Include="..\Bookify.Modules.Users.Application\Bookify.Modules.Users.Application.csproj" />

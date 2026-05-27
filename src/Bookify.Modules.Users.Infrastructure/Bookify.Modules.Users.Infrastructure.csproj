@@ -9,12 +9,14 @@
     <ItemGroup>
       <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.8" />
       <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="10.0.8" />
+      <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="10.0.8" />
       <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.1" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\Bookify.Modules.Users.Application\Bookify.Modules.Users.Application.csproj" />
       <ProjectReference Include="..\Bookify.Modules.Users.Domain\Bookify.Modules.Users.Domain.csproj" />
+      <ProjectReference Include="..\Bookify.Modules.Users.PublicApi\Bookify.Modules.Users.PublicApi.csproj" />
     </ItemGroup>
 
 </Project>

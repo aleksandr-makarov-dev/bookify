@@ -1,5 +1,6 @@
 using System.Text;
 using Bookify.Api.Behaviors;
+using Bookify.Modules.Booking.Infrastructure;
 using Bookify.Modules.Scheduling.Infrastructure;
 using Bookify.Modules.Users.Infrastructure;
 using FluentValidation;
@@ -15,17 +16,20 @@ builder.Services.AddControllers();
 
 builder.Services.AddUsersModule(builder.Configuration);
 builder.Services.AddSchedulingModule(builder.Configuration);
+builder.Services.AddBookingModule(builder.Configuration);
 
 builder.Services.AddValidatorsFromAssemblies([
     Bookify.Modules.Users.Application.AssemblyReference.Assembly,
-    Bookify.Modules.Scheduling.Application.AssemblyReference.Assembly
+    Bookify.Modules.Scheduling.Application.AssemblyReference.Assembly,
+    Bookify.Modules.Booking.Application.AssemblyReference.Assembly
 ]);
 
 builder.Services.AddMediatR(cfg =>
 {
     cfg.RegisterServicesFromAssemblies([
         typeof(Bookify.Modules.Users.Application.AssemblyReference).Assembly,
-        typeof(Bookify.Modules.Scheduling.Application.AssemblyReference).Assembly
+        typeof(Bookify.Modules.Scheduling.Application.AssemblyReference).Assembly,
+        typeof(Bookify.Modules.Booking.Application.AssemblyReference).Assembly
     ]);
 
     cfg.AddOpenBehavior(typeof(ValidationPipelineBehavior<,>));
