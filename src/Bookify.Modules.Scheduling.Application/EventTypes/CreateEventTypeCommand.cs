@@ -1,4 +1,4 @@
-﻿using Bookify.Constants;
+﻿using Bookify.Common;
 using Bookify.Modules.Scheduling.Application.Abstract;
 using Bookify.Modules.Scheduling.Domain;
 using ErrorOr;

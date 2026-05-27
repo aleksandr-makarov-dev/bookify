@@ -20,6 +20,14 @@ public class EventTypesController(IMediator mediator) : ControllerBase
         return result.Match<IActionResult>(value => Ok(value), BadRequest);
     }
 
+    [HttpGet("{eventTypeId:guid}")]
+    public async Task<IActionResult> GetEventType(Guid eventTypeId, CancellationToken ct)
+    {
+        var result = await mediator.Send(new GetEventTypeQuery() { Id = eventTypeId }, ct);
+
+        return result.Match<IActionResult>(Ok, NotFound);
+    }
+
     [HttpGet("{eventTypeId:guid}/availability")]
     public async Task<IActionResult> GetAvailability([FromRoute] Guid eventTypeId,
         [FromQuery, Required] DateOnly startDate, [FromQuery, Required] DateOnly endDate, CancellationToken ct)
@@ -33,7 +41,7 @@ public class EventTypesController(IMediator mediator) : ControllerBase
         };
 
         var result = await mediator.Send(query, ct);
-        
+
         return Ok(result);
     }
 }

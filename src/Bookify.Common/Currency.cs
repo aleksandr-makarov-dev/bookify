@@ -1,4 +1,4 @@
-﻿namespace Bookify.Constants;
+﻿namespace Bookify.Common;
 
 public static class Currency
 {
