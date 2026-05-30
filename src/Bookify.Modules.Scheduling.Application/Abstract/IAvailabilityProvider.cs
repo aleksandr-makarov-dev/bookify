@@ -1,5 +1,4 @@
 ﻿using Bookify.Modules.Scheduling.Application.Abstract.Models;
-using ErrorOr;
 
 namespace Bookify.Modules.Scheduling.Application.Abstract;
 

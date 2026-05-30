@@ -1,11 +1,11 @@
-﻿using Bookify.Api.Requests.Orders;
+﻿using Bookify.Application.Authentication;
+using Bookify.Booking.Api.Requests.Orders;
 using Bookify.Modules.Booking.Application.Orders;
 using Bookify.Modules.Booking.Application.Payments;
-using Bookify.Modules.Users.Application.Abstract;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Bookify.Api.Controllers;
+namespace Bookify.Booking.Api.Controllers;
 
 [ApiController]
 [Route("api/orders")]

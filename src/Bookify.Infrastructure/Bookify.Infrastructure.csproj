@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.8" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="10.0.4"/>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.8"/>
+        <PackageReference Include="MassTransit" Version="8.3.6"/>
+        <PackageReference Include="MassTransit.RabbitMQ" Version="8.3.6"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Bookify.Application\Bookify.Application.csproj" />
+    </ItemGroup>
+
+</Project>

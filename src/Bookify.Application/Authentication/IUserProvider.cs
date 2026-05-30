@@ -1,4 +1,4 @@
-﻿namespace Bookify.Modules.Users.Application.Abstract;
+﻿namespace Bookify.Application.Authentication;
 
 public interface IUserProvider
 {

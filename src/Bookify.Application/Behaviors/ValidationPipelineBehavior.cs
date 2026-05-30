@@ -2,7 +2,7 @@
 using FluentValidation;
 using MediatR;
 
-namespace Bookify.Api.Behaviors;
+namespace Bookify.Application.Behaviors;
 
 public class ValidationPipelineBehavior<TRequest, TResponse>(IValidator<TRequest>? validator = null)
     : IPipelineBehavior<TRequest, TResponse>

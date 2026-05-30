@@ -1,40 +1,26 @@
 using Bookify.Application;
 using Bookify.Infrastructure;
-using Bookify.Modules.Notifications.Infrastructure;
-using Bookify.Modules.Scheduling.Infrastructure;
-using Bookify.Modules.Users.Infrastructure;
+using Bookify.Modules.Booking.Infrastructure;
 using FluentValidation;
 using Microsoft.OpenApi;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
 
-builder.Services.AddUsersModule(builder.Configuration);
-builder.Services.AddSchedulingModule(builder.Configuration);
-builder.Services.AddNotificationModule(builder.Configuration);
+builder.Services.AddBookingModule(builder.Configuration);
 
 builder.Services.AddInfrastructureLayer(builder.Configuration, [typeof(Program).Assembly]);
 builder.Services.AddApplicationLayer([
-    typeof(Bookify.Modules.Users.Application.AssemblyReference).Assembly,
-    typeof(Bookify.Modules.Scheduling.Application.AssemblyReference).Assembly,
-    typeof(Bookify.Modules.Notifications.Application.AssemblyReference).Assembly
+    typeof(Bookify.Modules.Booking.Application.AssemblyReference).Assembly,
 ]);
 
 builder.Services.AddValidatorsFromAssemblies([
-    Bookify.Modules.Users.Application.AssemblyReference.Assembly,
-    Bookify.Modules.Scheduling.Application.AssemblyReference.Assembly,
+    Bookify.Modules.Booking.Application.AssemblyReference.Assembly
 ]);
-
 
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddProblemDetails();
-
-builder.Services.AddAuthorization();
-
-builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen(options =>
 {
@@ -61,7 +47,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseAuthentication();
+app.UseHttpsRedirection();
+
 app.UseAuthorization();
 
 app.MapControllers();

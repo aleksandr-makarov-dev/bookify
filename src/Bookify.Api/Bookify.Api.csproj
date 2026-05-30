@@ -9,14 +9,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="ErrorOr" Version="2.1.1" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="10.1.7" />
         <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.1.1" />
-        <PackageReference Include="MassTransit" Version="8.3.6" />
-        <PackageReference Include="MassTransit.RabbitMQ" Version="8.3.6" />
-        <PackageReference Include="MediatR" Version="14.1.0" />
-        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.8" />
-        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="10.0.8" />
-        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.8"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.8">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -26,7 +20,6 @@
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.1" />
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="10.1.7" />
     </ItemGroup>
 
     <ItemGroup>
@@ -36,8 +29,9 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Bookify.Modules.Booking.Application\Bookify.Modules.Booking.Application.csproj" />
-      <ProjectReference Include="..\Bookify.Modules.Booking.Infrastructure\Bookify.Modules.Booking.Infrastructure.csproj" />
+      <ProjectReference Include="..\Bookify.Application\Bookify.Application.csproj" />
+      <ProjectReference Include="..\Bookify.Infrastructure\Bookify.Infrastructure.csproj" />
+      <ProjectReference Include="..\Bookify.Modules.Booking.IntegrationEvents\Bookify.Modules.Booking.IntegrationEvents.csproj" />
       <ProjectReference Include="..\Bookify.Modules.Notifications.Application\Bookify.Modules.Notifications.Application.csproj" />
       <ProjectReference Include="..\Bookify.Modules.Notifications.Infrastructure\Bookify.Modules.Notifications.Infrastructure.csproj" />
       <ProjectReference Include="..\Bookify.Modules.Scheduling.Application\Bookify.Modules.Scheduling.Application.csproj" />

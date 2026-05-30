@@ -1,6 +1,6 @@
 ﻿using System.Security.Claims;
 
-namespace Bookify.Modules.Users.Infrastructure.Identity;
+namespace Bookify.Infrastructure.Authentication;
 
 public static class ClaimPrincipalExtensions
 {

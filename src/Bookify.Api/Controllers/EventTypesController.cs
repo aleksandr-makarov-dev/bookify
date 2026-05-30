@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Bookify.Application.Authentication;
 using Bookify.Modules.Scheduling.Application.Availability;
 using Bookify.Modules.Scheduling.Application.EventTypes;
 using Bookify.Modules.Users.Application.Abstract;

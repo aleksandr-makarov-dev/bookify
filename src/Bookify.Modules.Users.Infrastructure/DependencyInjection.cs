@@ -26,6 +26,5 @@ public static class DependencyInjection
             .AddPasswordlessLoginTokenProvider();
 
         services.AddTransient<ITokenProvider, TokenProvider>();
-        services.AddScoped<IUserProvider, UserProvider>();
     }
 }

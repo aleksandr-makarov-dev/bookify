@@ -1,5 +1,4 @@
-﻿using Bookify.Modules.Users.Application.Abstract;
-using Bookify.Modules.Users.Domain;
+﻿using Bookify.Modules.Users.Domain;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 

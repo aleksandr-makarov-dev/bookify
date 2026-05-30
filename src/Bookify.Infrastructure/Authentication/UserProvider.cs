@@ -1,9 +1,9 @@
 ﻿using System.Security.Claims;
-using Bookify.Modules.Users.Application.Abstract;
+using Bookify.Application.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.IdentityModel.JsonWebTokens;
 
-namespace Bookify.Modules.Users.Infrastructure.Identity;
+namespace Bookify.Infrastructure.Authentication;
 
 public class UserProvider(IHttpContextAccessor context) : IUserProvider
 {

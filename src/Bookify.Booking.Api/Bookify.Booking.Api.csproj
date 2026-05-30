@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UserSecretsId>dec2c5f1-5b8e-456c-8954-f12da0ef4ff4</UserSecretsId>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="10.1.7" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Bookify.Application\Bookify.Application.csproj" />
+      <ProjectReference Include="..\Bookify.Infrastructure\Bookify.Infrastructure.csproj" />
+      <ProjectReference Include="..\Bookify.Modules.Booking.Application\Bookify.Modules.Booking.Application.csproj" />
+      <ProjectReference Include="..\Bookify.Modules.Booking.Infrastructure\Bookify.Modules.Booking.Infrastructure.csproj" />
+      <ProjectReference Include="..\Bookify.Modules.Users.Application\Bookify.Modules.Users.Application.csproj" />
+    </ItemGroup>
+
+</Project>
