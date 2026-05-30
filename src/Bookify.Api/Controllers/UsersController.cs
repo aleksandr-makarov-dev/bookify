@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Bookify.Api.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/users")]
 public class UsersController(
     IMediator mediator)
     : ControllerBase
@@ -20,13 +20,7 @@ public class UsersController(
             return BadRequest(result.Errors);
         }
 
-        var emailConfirmationLink = Url.Action("ConfirmEmail", "Users",
-            new { email = result.Value.Email, token = result.Value.EmailConfirmationToken }, Request.Scheme);
-
-        return Ok(new
-        {
-            EmailConfirmationLink = emailConfirmationLink
-        });
+        return Ok();
     }
 
     [HttpGet("confirm-email")]
@@ -47,10 +41,7 @@ public class UsersController(
             return Unauthorized(result.Errors);
         }
 
-        var loginLink = Url.Action("ConfirmLoginLink", "Users",
-            new { email = result.Value.Email, token = result.Value.LoginToken }, Request.Scheme);
-
-        return Ok(new { LoginLink = loginLink });
+        return Ok();
     }
 
     [HttpGet("login-link/confirm")]

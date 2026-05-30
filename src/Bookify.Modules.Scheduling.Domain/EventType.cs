@@ -1,8 +1,9 @@
-﻿namespace Bookify.Modules.Scheduling.Domain;
+﻿using Bookify.Domain;
 
-public class EventType
+namespace Bookify.Modules.Scheduling.Domain;
+
+public class EventType : Entity
 {
-    public Guid Id { get; set; }
     public string Title { get; set; }
     public string Description { get; set; }
     public string TimeZone { get; set; }

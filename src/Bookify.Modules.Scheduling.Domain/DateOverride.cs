@@ -1,8 +1,9 @@
-﻿namespace Bookify.Modules.Scheduling.Domain;
+﻿using Bookify.Domain;
 
-public class DateOverride
+namespace Bookify.Modules.Scheduling.Domain;
+
+public class DateOverride : Entity
 {
-    public Guid Id { get; set; }
     public Guid EventTypeId { get; set; }
     public DateOnly Date { get; set; }
     public bool IsUnavailable { get; set; }

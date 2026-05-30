@@ -1,8 +1,9 @@
-﻿namespace Bookify.Modules.Scheduling.Domain;
+﻿using Bookify.Domain;
 
-public class AvailabilityRule
+namespace Bookify.Modules.Scheduling.Domain;
+
+public class AvailabilityRule : Entity
 {
-    public Guid Id { get; set; }
     public Guid EventTypeId { get; set; }
     public DayOfWeek DayOfWeek { get; set; }
     public TimeOnly StartTime { get; set; }

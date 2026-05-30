@@ -1,7 +1,9 @@
-﻿using Bookify.Common;
+﻿using Bookify.Domain;
 using Bookify.Modules.Booking.Application.Abstract;
 using Bookify.Modules.Booking.Domain;
+using Bookify.Modules.Booking.IntegrationEvents;
 using ErrorOr;
+using MassTransit;
 using MediatR;
 
 namespace Bookify.Modules.Booking.Application.Orders;
@@ -11,17 +13,16 @@ public class CreateOrderResult
     public Guid OrderId { get; init; }
 }
 
-public class CreateOrderCommand : IRequest<ErrorOr<CreateOrderResult>>
-{
-    public Guid EventTypeId { get; init; }
-    public DateTime StartDateTime { get; init; }
-    public DateTime EndDateTime { get; init; }
-    public string? Message { get; set; }
-    public Guid UserId { get; init; }
-    public string TimeZone { get; init; }
-}
+public sealed record CreateOrderCommand(
+    Guid EventTypeId,
+    DateTime StartDateTime,
+    DateTime EndDateTime,
+    string? Message,
+    Guid UserId,
+    string GuestEmail,
+    string TimeZone) : IRequest<ErrorOr<CreateOrderResult>>;
 
-public class CreateOderCommandHandler(IBookingDataProvider bookingDataProvider)
+public class CreateOderCommandHandler(IBookingDataProvider bookingDataProvider, IBus bus)
     : IRequestHandler<CreateOrderCommand, ErrorOr<CreateOrderResult>>
 {
     public async Task<ErrorOr<CreateOrderResult>> Handle(CreateOrderCommand request,
@@ -44,12 +45,16 @@ public class CreateOderCommandHandler(IBookingDataProvider bookingDataProvider)
             Amount = 15,
             Currency = Currency.EUR,
             Message = request.Message,
+            GuestEmail = request.GuestEmail,
             Status = OrderStatus.Pending,
             CreatedAt = DateTime.UtcNow
         };
 
         bookingDataProvider.Orders.Add(order);
         await bookingDataProvider.SaveChangesAsync(cancellationToken);
+
+        await bus.Publish(new OrderCreatedIntegrationEvent(order.Id,
+            order.EventTypeId, order.StartDateTime, order.EndDateTime), cancellationToken);
 
         return new CreateOrderResult { OrderId = orderId };
     }

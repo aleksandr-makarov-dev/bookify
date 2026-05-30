@@ -1,6 +1,8 @@
 ﻿using Bookify.Modules.Booking.Application.Abstract;
 using Bookify.Modules.Booking.Domain;
+using Bookify.Modules.Booking.IntegrationEvents;
 using ErrorOr;
+using MassTransit;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,7 +14,10 @@ public class ConfirmPaymentCommand : IRequest<ErrorOr<Success>>
     public string ExternalPaymentId { get; init; }
 }
 
-public class ConfirmPaymentCommandHandler(IBookingDataProvider bookingDataProvider, IPaymentProvider paymentProvider)
+public class ConfirmPaymentCommandHandler(
+    IBookingDataProvider bookingDataProvider,
+    IPaymentProvider paymentProvider,
+    IBus bus)
     : IRequestHandler<ConfirmPaymentCommand, ErrorOr<Success>>
 {
     public async Task<ErrorOr<Success>> Handle(ConfirmPaymentCommand request, CancellationToken cancellationToken)
@@ -45,6 +50,11 @@ public class ConfirmPaymentCommandHandler(IBookingDataProvider bookingDataProvid
         payment.Status = PaymentStatus.Confirmed;
 
         await bookingDataProvider.SaveChangesAsync(cancellationToken);
+
+        await bus.Publish(
+            new OrderPaidIntegrationEvent(order.GuestEmail, order.Id, payment.Amount, payment.Currency),
+            cancellationToken);
+
 
         return Result.Success;
     }

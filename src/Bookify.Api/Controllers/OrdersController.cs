@@ -14,15 +14,14 @@ public class OrdersController(IMediator mediator, IUserProvider userProvider) : 
     [HttpPost]
     public async Task<IActionResult> CreateOrder([FromBody] CreateOrderRequest request, CancellationToken ct)
     {
-        var command = new CreateOrderCommand()
-        {
-            EventTypeId = request.EventTypeId,
-            StartDateTime = request.StartDateTime,
-            EndDateTime = request.EndDateTime,
-            Message = request.Message,
-            UserId = userProvider.UserId,
-            TimeZone = userProvider.TimeZone,
-        };
+        var command = new CreateOrderCommand(
+            request.EventTypeId,
+            request.StartDateTime,
+            request.EndDateTime,
+            request.Message,
+            userProvider.UserId,
+            userProvider.Email,
+            userProvider.TimeZone);
 
         var result = await mediator.Send(command, ct);
 

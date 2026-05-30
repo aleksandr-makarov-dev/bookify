@@ -29,5 +29,6 @@ public static class DependencyInjection
         services.AddSingleton<StripeClient>(_ => new StripeClient(configuration["Stripe:SecretKey"]));
         services.AddScoped<SessionService>(serviceProvider =>
             new SessionService(serviceProvider.GetRequiredService<StripeClient>()));
+        
     }
 }

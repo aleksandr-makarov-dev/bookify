@@ -28,7 +28,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookify.Modules.Scheduling.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookify.Modules.Scheduling.Application", "src\Bookify.Modules.Scheduling.Application\Bookify.Modules.Scheduling.Application.csproj", "{E4788284-7B5C-4AF3-BAF2-CA9B893DD5AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookify.Common", "src\Bookify.Common\Bookify.Common.csproj", "{48B06B96-54BE-443A-ADBA-86D2655AC214}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookify.Domain", "src\Bookify.Domain\Bookify.Domain.csproj", "{48B06B96-54BE-443A-ADBA-86D2655AC214}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Booking", "Booking", "{B5D0AE96-0C85-4D8A-9911-98CC9F9C2143}"
 EndProject
@@ -37,6 +37,16 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookify.Modules.Booking.Application", "src\Bookify.Modules.Booking.Application\Bookify.Modules.Booking.Application.csproj", "{D74BFFE4-A433-45A1-A302-ABFF5BD9B3A0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookify.Modules.Booking.Infrastructure", "src\Bookify.Modules.Booking.Infrastructure\Bookify.Modules.Booking.Infrastructure.csproj", "{CCC7A838-5A16-4272-BA20-E734609A83F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookify.Modules.Booking.IntegrationEvents", "src\Bookify.Modules.Booking.IntegrationEvents\Bookify.Modules.Booking.IntegrationEvents.csproj", "{F0F107A9-F041-4008-9B02-0F43154CA4DD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Notifications", "Notifications", "{457B9026-75EF-4AF8-8770-F7328E735BAF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookify.Modules.Notifications.Infrastructure", "src\Bookify.Modules.Notifications.Infrastructure\Bookify.Modules.Notifications.Infrastructure.csproj", "{6099BCA2-A21A-4210-8FFA-A71D76BDCDD8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookify.Modules.Notifications.Application", "src\Bookify.Modules.Notifications.Application\Bookify.Modules.Notifications.Application.csproj", "{97D2AAC5-6B4F-42A7-9F3E-BF0C9B9E05D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookify.Modules.Users.IntegrationEvents", "src\Bookify.Modules.Users.IntegrationEvents\Bookify.Modules.Users.IntegrationEvents.csproj", "{7B922FB3-71CA-4095-88AD-3F6AA6FC7811}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +69,11 @@ Global
 		{DD6E8EF9-4B28-486C-9562-E4368EBD00D2} = {B5D0AE96-0C85-4D8A-9911-98CC9F9C2143}
 		{D74BFFE4-A433-45A1-A302-ABFF5BD9B3A0} = {B5D0AE96-0C85-4D8A-9911-98CC9F9C2143}
 		{CCC7A838-5A16-4272-BA20-E734609A83F7} = {B5D0AE96-0C85-4D8A-9911-98CC9F9C2143}
+		{F0F107A9-F041-4008-9B02-0F43154CA4DD} = {B5D0AE96-0C85-4D8A-9911-98CC9F9C2143}
+		{457B9026-75EF-4AF8-8770-F7328E735BAF} = {499EA8D2-8154-4DFD-991C-C7D1D33CE840}
+		{6099BCA2-A21A-4210-8FFA-A71D76BDCDD8} = {457B9026-75EF-4AF8-8770-F7328E735BAF}
+		{97D2AAC5-6B4F-42A7-9F3E-BF0C9B9E05D7} = {457B9026-75EF-4AF8-8770-F7328E735BAF}
+		{7B922FB3-71CA-4095-88AD-3F6AA6FC7811} = {400C4373-EFA1-460D-A2CF-37513F63DED4}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{92071C1A-136E-4B3C-9F48-775A2DB0DD14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -105,5 +120,21 @@ Global
 		{CCC7A838-5A16-4272-BA20-E734609A83F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CCC7A838-5A16-4272-BA20-E734609A83F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CCC7A838-5A16-4272-BA20-E734609A83F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0F107A9-F041-4008-9B02-0F43154CA4DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0F107A9-F041-4008-9B02-0F43154CA4DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0F107A9-F041-4008-9B02-0F43154CA4DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0F107A9-F041-4008-9B02-0F43154CA4DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6099BCA2-A21A-4210-8FFA-A71D76BDCDD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6099BCA2-A21A-4210-8FFA-A71D76BDCDD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6099BCA2-A21A-4210-8FFA-A71D76BDCDD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6099BCA2-A21A-4210-8FFA-A71D76BDCDD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97D2AAC5-6B4F-42A7-9F3E-BF0C9B9E05D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97D2AAC5-6B4F-42A7-9F3E-BF0C9B9E05D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97D2AAC5-6B4F-42A7-9F3E-BF0C9B9E05D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97D2AAC5-6B4F-42A7-9F3E-BF0C9B9E05D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B922FB3-71CA-4095-88AD-3F6AA6FC7811}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B922FB3-71CA-4095-88AD-3F6AA6FC7811}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B922FB3-71CA-4095-88AD-3F6AA6FC7811}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B922FB3-71CA-4095-88AD-3F6AA6FC7811}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -8,14 +8,16 @@
 
     <ItemGroup>
         <PackageReference Include="ErrorOr" Version="2.1.1" />
+        <PackageReference Include="MassTransit.Abstractions" Version="8.3.6" />
         <PackageReference Include="MediatR" Version="14.1.0" />
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.8" />
         <PackageReference Include="Stripe.net" Version="51.1.0" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Bookify.Common\Bookify.Common.csproj" />
+      <ProjectReference Include="..\Bookify.Domain\Bookify.Domain.csproj" />
       <ProjectReference Include="..\Bookify.Modules.Booking.Domain\Bookify.Modules.Booking.Domain.csproj" />
+      <ProjectReference Include="..\Bookify.Modules.Booking.IntegrationEvents\Bookify.Modules.Booking.IntegrationEvents.csproj" />
     </ItemGroup>
     
 </Project>

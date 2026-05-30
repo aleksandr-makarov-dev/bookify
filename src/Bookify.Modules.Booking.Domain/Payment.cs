@@ -1,8 +1,9 @@
-﻿namespace Bookify.Modules.Booking.Domain;
+﻿using Bookify.Domain;
 
-public class Payment
+namespace Bookify.Modules.Booking.Domain;
+
+public class Payment : Entity
 {
-    public Guid Id { get; set; }
     public Guid OrderId { get; set; }
     public string ExternalPaymentId { get; set; }
     public decimal Amount { get; set; }

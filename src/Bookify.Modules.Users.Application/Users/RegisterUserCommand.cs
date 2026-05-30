@@ -1,25 +1,16 @@
 ﻿using System.Text;
 using Bookify.Modules.Users.Domain;
+using Bookify.Modules.Users.IntegrationEvents;
 using ErrorOr;
 using FluentValidation;
+using MassTransit;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.WebUtilities;
 
 namespace Bookify.Modules.Users.Application.Users;
 
-public class RegisterUserResult
-{
-    public string Email { get; init; }
-    public string EmailConfirmationToken { get; init; }
-}
-
-public class RegisterUserCommand : IRequest<ErrorOr<RegisterUserResult>>
-{
-    public string Name { get; init; }
-    public string Email { get; init; }
-    public string TimeZone { get; init; }
-}
+public sealed record RegisterUserCommand(string Name, string Email, string TimeZone) : IRequest<ErrorOr<Success>>;
 
 public class RegisterUserValidator : AbstractValidator<RegisterUserCommand>
 {
@@ -37,10 +28,10 @@ public class RegisterUserValidator : AbstractValidator<RegisterUserCommand>
     }
 }
 
-public class RegisterUserCommandHandler(UserManager<User> userManager)
-    : IRequestHandler<RegisterUserCommand, ErrorOr<RegisterUserResult>>
+public class RegisterUserCommandHandler(UserManager<User> userManager, IBus bus)
+    : IRequestHandler<RegisterUserCommand, ErrorOr<Success>>
 {
-    public async Task<ErrorOr<RegisterUserResult>> Handle(RegisterUserCommand request,
+    public async Task<ErrorOr<Success>> Handle(RegisterUserCommand request,
         CancellationToken cancellationToken)
     {
         var user = new User(request.Name, request.Email, request.TimeZone);
@@ -56,10 +47,9 @@ public class RegisterUserCommandHandler(UserManager<User> userManager)
         var encodedEmailConfirmationToken =
             WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(rawEmailConfirmationToken));
 
-        return new RegisterUserResult
-        {
-            Email = request.Email,
-            EmailConfirmationToken = encodedEmailConfirmationToken,
-        };
+        await bus.Publish(new UserRegisteredIntegrationEvent(request.Email, encodedEmailConfirmationToken),
+            cancellationToken);
+
+        return Result.Success;
     }
 }

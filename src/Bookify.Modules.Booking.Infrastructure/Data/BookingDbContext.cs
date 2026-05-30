@@ -26,6 +26,10 @@ internal class BookingDbContext(DbContextOptions<BookingDbContext> options)
                 .HasMaxLength(3)
                 .IsRequired();
 
+            options.Property(e => e.GuestEmail)
+                .HasMaxLength(128)
+                .IsRequired();
+
             options.Property(e => e.Message)
                 .HasMaxLength(256);
         });

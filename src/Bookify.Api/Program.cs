@@ -1,9 +1,11 @@
 using System.Text;
 using Bookify.Api.Behaviors;
 using Bookify.Modules.Booking.Infrastructure;
+using Bookify.Modules.Notifications.Infrastructure;
 using Bookify.Modules.Scheduling.Infrastructure;
 using Bookify.Modules.Users.Infrastructure;
 using FluentValidation;
+using MassTransit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi;
@@ -17,6 +19,7 @@ builder.Services.AddControllers();
 builder.Services.AddUsersModule(builder.Configuration);
 builder.Services.AddSchedulingModule(builder.Configuration);
 builder.Services.AddBookingModule(builder.Configuration);
+builder.Services.AddNotificationModule(builder.Configuration);
 
 builder.Services.AddValidatorsFromAssemblies([
     Bookify.Modules.Users.Application.AssemblyReference.Assembly,
@@ -29,10 +32,29 @@ builder.Services.AddMediatR(cfg =>
     cfg.RegisterServicesFromAssemblies([
         typeof(Bookify.Modules.Users.Application.AssemblyReference).Assembly,
         typeof(Bookify.Modules.Scheduling.Application.AssemblyReference).Assembly,
-        typeof(Bookify.Modules.Booking.Application.AssemblyReference).Assembly
+        typeof(Bookify.Modules.Booking.Application.AssemblyReference).Assembly,
+        typeof(Bookify.Modules.Notifications.Application.AssemblyReference).Assembly
     ]);
 
     cfg.AddOpenBehavior(typeof(ValidationPipelineBehavior<,>));
+});
+
+builder.Services.AddMassTransit(configure =>
+{
+    configure.AddConsumers(typeof(Program).Assembly);
+
+    configure.SetKebabCaseEndpointNameFormatter();
+
+    configure.UsingRabbitMq((context, cfg) =>
+    {
+        cfg.Host(builder.Configuration["RabbitMq:Host"], "/", host =>
+        {
+            host.Username(builder.Configuration["RabbitMq:Username"]);
+            host.Password(builder.Configuration["RabbitMq:Password"]);
+        });
+
+        cfg.ConfigureEndpoints(context);
+    });
 });
 
 builder.Services.AddHttpContextAccessor();

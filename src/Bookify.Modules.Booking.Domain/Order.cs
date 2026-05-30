@@ -1,10 +1,12 @@
-﻿namespace Bookify.Modules.Booking.Domain;
+﻿using Bookify.Domain;
 
-public class Order
+namespace Bookify.Modules.Booking.Domain;
+
+public class Order : Entity
 {
-    public Guid Id { get; set; }
     public Guid EventTypeId { get; set; }
     public Guid UserId { get; set; }
+    public string GuestEmail { get; set; }
     public DateTime StartDateTime { get; set; }
     public DateTime EndDateTime { get; set; }
     public OrderStatus Status { get; set; }

@@ -13,7 +13,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Bookify.Common\Bookify.Common.csproj" />
+      <ProjectReference Include="..\Bookify.Domain\Bookify.Domain.csproj" />
       <ProjectReference Include="..\Bookify.Modules.Scheduling.Domain\Bookify.Modules.Scheduling.Domain.csproj" />
     </ItemGroup>
 </Project>
